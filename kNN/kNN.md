@@ -1,4 +1,6 @@
-k-近邻算法，属于分类算法
+# k-近邻算法，属于分类算法
+
+@[机器学习]
 
 > 工作原理：
 存在一个样本数据集合（训练样本集），样本集中每个数据都存在标签（对应的分类）。
@@ -19,11 +21,11 @@ k-近邻算法，属于分类算法
 
 Python 3.X 示例代码另见knn.py
 
-***
+----------
 
 ## 函数说明：
 
-### knn_classify(inX, dataSet, labels, k)
+#### knn_classify(inX, dataSet, labels, k)
 
 本算法的核心
 参数说明：
@@ -35,24 +37,25 @@ k：选择最近邻的数目
 
 
 
-### loadDataSet(path)
+#### loadDataSet(path)
 
-加载数据集，在实验中，采用的是 IRIS数据集
+加载数据集
+在实验中，采用的是 IRIS数据集
 返回两个numpy的array对象，分别是特征集合以及对应的分类标签
 
-### autoNorm(dataSet)
+#### autoNorm(dataSet)
 
 特征归一化，将特征值转化为0到1区间内的值
 newValue = (oldValue - min) / (max - min)
 
-### def showDataSet(dataSet, labels)
+#### def showDataSet(dataSet, labels)
 
 展示数据集，在这里只是将数据集的第0和第3个特征作为x/y轴，绘制成散点图
 从结果可以看出，不同分类之间的数据呈现出区别
 
-### text2num(labels)
+#### text2num(labels)
 
 将文本标签转化为数字
-Iris-setosa     对应类别1
-Iris-versicolor 对应类别2
-Iris-virginica  对应类别3
+- Iris-setosa     对应类别1
+- Iris-versicolor 对应类别2
+- Iris-virginica  对应类别3
