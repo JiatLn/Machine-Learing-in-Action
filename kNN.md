@@ -18,6 +18,7 @@ k-近邻算法，属于分类算法
 - 返回前k个点出现频率最高的类别作为当前点的预测分类。
 
 Python 3.X 示例代码：
+```
 import random
 
 import numpy as np
@@ -115,7 +116,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-
+```
 函数说明：
 
 - knn_classify(inX, dataSet, labels, k)
