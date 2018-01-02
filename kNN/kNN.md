@@ -28,47 +28,47 @@ Python 3.X 示例代码另见knn.py
 
 - knn_classify(inX, dataSet, labels, k)
 
-本算法的核心
+  本算法的核心
 
-参数说明：
+  参数说明：
 
-inX：待分类的特征向量
+  inX：待分类的特征向量
 
-dataSet：训练样本集
+  dataSet：训练样本集
 
-labels：训练样本对应的分类标签
+  labels：训练样本对应的分类标签
 
-k：选择最近邻的数目
+  k：选择最近邻的数目
 
 
 
 
 - loadDataSet(path)
 
-加载数据集
+  加载数据集
+  
+  在实验中，采用的是 IRIS数据集
 
-在实验中，采用的是 IRIS数据集
-
-返回两个numpy的array对象，分别是特征集合以及对应的分类标签
+  返回两个numpy的array对象，分别是特征集合以及对应的分类标签
 
 - autoNorm(dataSet)
 
-特征归一化，将特征值转化为0到1区间内的值
+  特征归一化，将特征值转化为0到1区间内的值
 
-newValue = (oldValue - min) / (max - min)
+  newValue = (oldValue - min) / (max - min)
 
 - def showDataSet(dataSet, labels)
 
-展示数据集，在这里只是将数据集的第0和第3个特征作为x/y轴，绘制成散点图
+  展示数据集，在这里只是将数据集的第0和第3个特征作为x/y轴，绘制成散点图
 
-从结果可以看出，不同分类之间的数据呈现出区别
+  从结果可以看出，不同分类之间的数据呈现出区别
 
 - text2num(labels)
 
-将文本标签转化为数字
+  将文本标签转化为数字
 
-Iris-setosa     对应类别1
+  Iris-setosa     对应类别1
 
-Iris-versicolor 对应类别2
+  Iris-versicolor 对应类别2
 
-Iris-virginica  对应类别3
+  Iris-virginica  对应类别3
