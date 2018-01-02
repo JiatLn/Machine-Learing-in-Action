@@ -88,7 +88,7 @@ def main():
         print('预测分类结果为{0}, 实际分类为{1}'.format(result, testLabel[i]))
         if result != testLabel[i]:
             errorCount += 1
-    print('the total error rate is:', errorCount / 50)
+    print('the total error rate is:', errorCount / len(testLabel))
 
 
 
