@@ -96,7 +96,7 @@ def splitDataSet(dataSet, axis, value):
 
 1. 创建唯一的分类标签列表
 2. 计算每种划分方式的信息熵
-3. 计算最好的信息增益
+3. 计算最好的信息增益（返回最好特征划分的索引值）
 
 ```
 def chooseBestFeatureToSplit(dataSet):
@@ -112,11 +112,59 @@ def chooseBestFeatureToSplit(dataSet):
             subDataSet = splitDataSet(dataSet, i, value)
             prob = len(subDataSet) / float(len(dataSet))
             newEntropy += prob * calcShannonEnt(subDataSet)
-        infoGain = beseEntropy - newEntropy
+        infoGain = bestEntropy - newEntropy
         if(infoGain > bestInfoGain):
             bestInfoGain = infoGain
             bestFeature = i
     return bestFeature
 ```
+
+上述函数实现了选取特征，划分数据集，计算得出最好的划分数据集的特征。
+
+### 递归构建决策树
+
+递归终止条件：程序遍历完所有划分数据集的属性，或者每个分支下的所有实例都具有相同的分类。
+
+如果数据集已经处理了所有属性，但是类别标签依然不是唯一的，此时通常采用多数表决的方法决定该叶子节点的分类。
+
+```
+import operator
+def majorityCnt(classList):
+    classCount = {}
+    for vote in classList:
+        if vote not in classCount.keys():
+            classCount[vote] = 0
+        classCount[vote] += 1
+    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+```
+
+创建树的函数代码
+
+```
+def createTree(dataSet, labels):
+    classList = [example[-1] for example in dataSet]
+    if classList.count(classList[0]) == len(classList):
+        # 类别完全相同则停止继续划分
+        return classList[0]
+    if len(dataSet[0]) == 1:
+        # 遍历完所有特征时返回出现次数最多的
+        return majorityCnt(classList)
+    bestFeat = chooseBestFeatureToSplit(dataSet)
+    bestFeatLabel = labels[bestFeat]
+    myTree = {bestFeatLabel: {}}
+    del(labels[bestFeat])
+    featValues = [example[bestFeat] for example in dataSet]
+    uniqueVals = set(featValues)
+    for value in uniqueVals:
+        subLabels = labels[:]
+        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value), subLabels)
+    return myTree
+```
+
+* 树结构信息用嵌套字典表示 
+
+
+
 
 
